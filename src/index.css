@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Poppins', system-ui, sans-serif;
+  --color-accent: #6D28D9;
+  --color-accent-strong: #5B21B6;
+  --color-paper: #FAF9FC;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F1EDFB;
+  --color-ink: #181818;
+  --color-muted: #666666;
+  --color-line: #E7E2F2;
+}
+
+html {
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p, span, label {
+  text-wrap: pretty;
+}
+
+button, a, input, select, textarea {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+button:active, a:active {
+  transform: scale(0.98);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Named text styles (B1): sizes only from the Tailwind scale */
+.heading-1 { font-size: 2.25rem; line-height: 2.5rem; font-weight: 600; text-wrap: balance; }
+.heading-2 { font-size: 1.875rem; line-height: 2.25rem; font-weight: 600; text-wrap: balance; }
+.heading-3 { font-size: 1.5rem; line-height: 2rem; font-weight: 600; text-wrap: balance; }
+.heading-4 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 600; text-wrap: balance; }
+.title-1 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 500; }
+.title-2 { font-size: 1.125rem; line-height: 1.75rem; font-weight: 500; }
+.title-3 { font-size: 1rem; line-height: 1.5rem; font-weight: 500; }
+.body-1 { font-size: 1rem; line-height: 1.5rem; font-weight: 600; }
+.body-2 { font-size: 1rem; line-height: 1.5rem; font-weight: 500; }
+.body-3 { font-size: 1rem; line-height: 1.5rem; font-weight: 400; }
+.body-5 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; }
+.body-6 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; }
+.button-md { font-size: 1rem; line-height: 1.5rem; font-weight: 600; }
+.button-sm { font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; }
+.caption-2 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; }
+.caption-4 { font-size: 0.75rem; line-height: 1rem; font-weight: 500; }
+.caption-5 { font-size: 0.75rem; line-height: 1rem; font-weight: 400; }
+
+@media (min-width: 768px) {
+  .heading-1 { font-size: 3rem; line-height: 1; }
+  .heading-2 { font-size: 2.25rem; line-height: 2.5rem; }
+  .heading-3 { font-size: 1.875rem; line-height: 2.25rem; }
+}
+
+@media (min-width: 1024px) {
+  .heading-1 { font-size: 3.75rem; line-height: 1; }
+  .heading-2 { font-size: 3rem; line-height: 1; }
+}
+
+/* Hero heading gradient on text only (B5) */
+.hero-gradient {
+  background: linear-gradient(to right, #000000, #666666);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scroll reveal (B7): rise 32px + fade, base curve, once */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tagline reveal words (B11) */
+.tagline-word {
+  opacity: 0.3;
+  transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tagline-word.is-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .tagline-word { opacity: 1; }
+}
